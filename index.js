@@ -19,11 +19,12 @@ function filterTokens(string, opening, closing) {
 }
 
 /**
- * Searches for matching pairs with a simple stack algorithm.
+ * Search for matching pairs in a string.
  *
  * @param {string} string - The data that should be checked
  * @param {string|Array} [opening] - Valid opening characters / words
  * @param {string|Array} [closing] - Valid closing characters / words
+ * @returns {boolean}
  */
 module.exports = function(string, opening = ["("], closing = [")"]) {
   let stack = [];
