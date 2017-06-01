@@ -1,12 +1,17 @@
-module.exports = function(string) {
-  let stack = [];
-  let balanced = true;
-
+function filterTokens(string) {
   let elements = string.split("");
   elements = elements.filter(e => {
     let allowedTokens = /\(|\)/;
     return e.match(allowedTokens);
   });
+
+  return elements;
+}
+
+module.exports = function(string) {
+  let stack = [];
+  let balanced = true;
+  let elements = filterTokens(string);
 
   for (element of elements) {
     if (element === "(") {
