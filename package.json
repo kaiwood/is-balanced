@@ -1,0 +1,14 @@
+{
+  "name": "is-balanced",
+  "version": "1.0.0",
+  "description": "Check if a string has balanced character or word pairs, e.g. '(', ')' or 'if', 'end'",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Kai Wood <kwood@kwd.io>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^20.0.4"
+  }
+}
