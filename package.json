@@ -13,5 +13,8 @@
   },
   "jest": {
     "testEnvironment": "node"
+  },
+  "dependencies": {
+    "escape-string-regexp": "^1.0.5"
   }
 }

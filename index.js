@@ -1,20 +1,33 @@
-function filterTokens(string) {
-  let elements = string.split("");
-  elements = elements.filter(e => {
-    let allowedTokens = /\(|\)/;
-    return e.match(allowedTokens);
-  });
+const escape = require("escape-string-regexp");
+
+function filterTokens(string, opening, closing) {
+  let validTokens = new RegExp(
+    [...opening, ...closing].map(e => escape(e)).join("|"),
+    "g"
+  );
+  let elements = [];
+  let token;
+  while ((token = validTokens.exec(string)) !== null) {
+    elements.push(token[0]);
+  }
 
   return elements;
 }
 
-module.exports = function(string) {
+/**
+ * Searches for matching pairs with a simple stack algorithm.
+ *
+ * @param {string} string - The data that should be checked
+ * @param {Array} [opening] - Valid opening characters / words
+ * @param {Array} [closing] - Valid closing characters / words
+ */
+module.exports = function(string, opening = ["("], closing = [")"]) {
   let stack = [];
   let balanced = true;
-  let elements = filterTokens(string);
+  let elements = filterTokens(string, opening, closing);
 
   for (element of elements) {
-    if (element === "(") {
+    if (opening.includes(element)) {
       stack.push(element);
     } else {
       if (stack.length === 0) {
