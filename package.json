@@ -1,13 +1,28 @@
 {
   "name": "is-balanced",
   "version": "1.0.0",
-  "description": "Check if a string has balanced character or word pairs, e.g. '(', ')' or 'if', 'end'",
+  "description": "Check if a string/text has balanced character or word pairs, e.g. '(', ')' or 'if', 'end'",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaiwood/is-balanced.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kaiwood/is-balanced/issues"
+  },
+  "homepage": "https://github.com/kaiwood/is-balanced",
   "scripts": {
     "test": "jest"
   },
   "author": "Kai Wood <kwood@kwd.io>",
   "license": "MIT",
+    "keywords": [
+      "balanced",
+      "balance",
+      "match",
+      "matching",
+      "parentheses"
+    ],
   "devDependencies": {
     "jest": "^20.0.4"
   },
