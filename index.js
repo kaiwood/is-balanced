@@ -2,7 +2,11 @@ const escape = require("escape-string-regexp");
 
 function filterTokens(string, opening, closing) {
   let validTokens = new RegExp(
-    [...opening, ...closing].map(e => escape(e)).join("|"),
+    [...opening, ...closing]
+      .map(e => {
+        return e instanceof RegExp ? e : escape(e);
+      })
+      .join("|"),
     "g"
   );
   let elements = [];

@@ -37,3 +37,21 @@ test("that it can use tokens that or not the default parenthesis", () => {
   expect(isBalanced(balancedData, ["if", "def"], ["end"])).toBe(true);
   expect(isBalanced(unbalancedData, ["if", "def"], ["end"])).toBe(false);
 });
+
+test("that it can differentiate between tokens at the beginning and in the middle of a line", () => {
+  let balancedData = `
+  def foo
+  end
+  puts "something" if true
+  `;
+
+  let unbalancedData = `
+  def foo
+  end
+  puts "something" if true
+  end
+  `;
+
+  expect(isBalanced(balancedData, [/^\s*?if/, "def"], ["end"])).toBe(true);
+  expect(isBalanced(unbalancedData, [/^\s*?if/, "def"], ["end"])).toBe(false);
+});
