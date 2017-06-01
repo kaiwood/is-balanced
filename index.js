@@ -42,5 +42,5 @@ module.exports = function(string, opening = ["("], closing = [")"]) {
     }
   }
 
-  return balanced && stack.length === 0 ? true : false;
+  return balanced && stack.length === 0;
 };
