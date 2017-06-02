@@ -1,6 +1,6 @@
 {
   "name": "is-balanced",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Check if a string/text has balanced character or word pairs, e.g. '(', ')' or 'if', 'end'",
   "main": "index.js",
   "repository": {
