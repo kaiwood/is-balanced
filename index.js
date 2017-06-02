@@ -17,10 +17,24 @@ function filterTokens(string, opening, closing) {
   let elements = [];
   let token;
   while ((token = validTokens.exec(string)) !== null) {
-    elements.push(token[0]);
+    elements.push(token[0].trim());
   }
 
   return elements;
+}
+
+function findOpening(element, opening) {
+  let found = false;
+
+  for (let token of [...opening]) {
+    if (token instanceof RegExp) {
+      if (element.match(token)) found = true;
+    } else {
+      if (token === element) found = true;
+    }
+  }
+
+  return found;
 }
 
 /**
@@ -37,7 +51,7 @@ module.exports = function(string, opening = ["("], closing = [")"]) {
   let elements = filterTokens(string, opening, closing);
 
   for (element of elements) {
-    if (opening.includes(element)) {
+    if (findOpening(element, opening)) {
       stack.push(element);
     } else {
       if (stack.length === 0) {

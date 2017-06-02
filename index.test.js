@@ -72,3 +72,44 @@ test("if opening/closing args work as a single string too", () => {
   expect(isBalanced(balancedData, "{", "}")).toBe(true);
   expect(isBalanced(unbalancedData, "{", "}")).toBe(false);
 });
+
+test("more cases", () => {
+  const openings = [
+    /^\s*?if/,
+    /^\s*?unless/,
+    "while",
+    "for",
+    "do",
+    "def",
+    "class",
+    "module",
+    "case"
+  ];
+
+  const closings = ["end"];
+
+  const text = `
+  def foo
+    if true
+
+    end
+  end
+`;
+
+  const unbalanced = `
+  def foo
+    if true
+
+    end
+  end
+`;
+
+  const balanced = `
+  def foo
+    puts "foo" if true
+  end
+`;
+
+  expect(isBalanced(text, openings, closings)).toBe(true);
+  expect(isBalanced(unbalanced, openings, closings)).toBe(true);
+});
