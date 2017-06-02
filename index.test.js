@@ -52,8 +52,17 @@ test("that it can differentiate between tokens at the beginning and in the middl
   end
   `;
 
+  let moreUnbalancedData = `
+  def foo
+    if true
+  end
+`;
+
   expect(isBalanced(balancedData, [/^\s*?if/, "def"], ["end"])).toBe(true);
   expect(isBalanced(unbalancedData, [/^\s*?if/, "def"], ["end"])).toBe(false);
+  expect(isBalanced(moreUnbalancedData, [/^\s*?if/, "def"], ["end"])).toBe(
+    false
+  );
 });
 
 test("if opening/closing args work as a single string too", () => {

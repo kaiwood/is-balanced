@@ -4,10 +4,15 @@ function filterTokens(string, opening, closing) {
   let validTokens = new RegExp(
     [...opening, ...closing]
       .map(e => {
-        return e instanceof RegExp ? e : escape(e);
+        if (e instanceof RegExp) {
+          let stringified = e.toString();
+          return stringified.substring(1, stringified.length - 1);
+        } else {
+          return escape(e);
+        }
       })
       .join("|"),
-    "g"
+    "gm"
   );
   let elements = [];
   let token;
